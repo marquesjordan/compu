@@ -2,7 +2,6 @@ const _ = require('lodash');
 const mongoose = require('mongoose');
 const keys = require('../config/keys');
 const requireLogin = require('../middlewares/requireLogin');
-const stripe = require('stripe')(keys.stripeSecretKey);
 const Profile = mongoose.model('profile');
 const Referral = mongoose.model('referrals');
 const Client = mongoose.model('clients');

@@ -2,7 +2,6 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
-import Payments from './Payments';
 import * as actions from '../actions';
 import './common/css/theme.css';
 

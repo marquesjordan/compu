@@ -32,10 +32,6 @@ export const fetchUserCredits = () => async dispatch => {
 };
 
 export const handleToken = token => async dispatch => {
-  const res = await axios.post('/api/stripe', token, {
-    headers: { Authorization: localStorage.jwtToken }
-  });
-
   const user = await axios.get('/api/current_user', {
     headers: { Authorization: localStorage.jwtToken }
   });
@@ -78,22 +74,6 @@ export const updateSubscription = () => async dispatch => {
     })
     .catch(err => {
       dispatch({ type: SUBSCRIPTION, payload: { error: 'Cancelation Error' } });
-    });
-};
-
-export const createSubscription = token => async dispatch => {
-  const res = await axios
-    .post('/api/stripe_subscription', token, {
-      headers: { Authorization: localStorage.jwtToken }
-    })
-    .then(() => {
-      dispatch({
-        type: SUBSCRIPTION,
-        payload: { success: 'Subscription Completed!' }
-      });
-    })
-    .catch(err => {
-      dispatch({ type: SUBSCRIPTION, payload: err.response.data });
     });
 };
 
