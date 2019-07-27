@@ -1,0 +1,7 @@
+.filter {
+  background: white;
+  height: 75px;
+  z-index: 1000;
+  position: fixed;
+  width: 100%;
+}

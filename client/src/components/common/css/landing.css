@@ -1,0 +1,107 @@
+.landing-hero {
+  background: #23262e no-repeat scroll center top;
+  background-size: cover;
+  height: 600px;
+}
+
+.landing-hero-message {
+  background-color: #26a69a;
+  border: 2px solid #004d40;
+  opacity: 0.7;
+  color: #ffffff;
+  text-shadow: 2px 2px 4px #000000;
+  margin-top: 70px;
+  padding: 15px 10px !important;
+}
+
+.floating-message {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  margin-top: 70px;
+}
+
+.middle-banner {
+  background: #283593;
+  font-weight: bolder;
+  color: #ffffff;
+  text-align: center;
+  padding: 20px;
+}
+
+.landing-title {
+  color: #009688;
+  font-size: 35px;
+  text-align: center;
+  padding: 15px 0;
+}
+
+.landing-hiw-steps {
+  padding: 15px;
+  border: 2px solid #009688;
+  border-radius: 4px;
+  height: 150px;
+  margin: 10px auto;
+  width: 90%;
+  font-weight: bold;
+  color: #ffffff;
+  text-shadow: 2px 2px 4px #000000;
+  background-color: #26a69a;
+}
+
+.landing-hiw-no {
+  font-size: 22px;
+  color: #ffc107;
+}
+
+.landing-bullets {
+  display: inline-block;
+  font-size: 20px;
+  color: #283593;
+  text-shadow: 2px 2px 4px #ffffff;
+}
+
+.landing-bullets i.material-icons {
+  vertical-align: bottom;
+  margin: 0 15px;
+}
+
+.landing-overview-rows {
+  padding: 20px 0;
+  text-align: center;
+}
+
+.benefits-wrapper .item-desc {
+  color: #000000;
+}
+
+@media only screen and (max-width: 768px) {
+  .landing-hero {
+    height: 400px;
+  }
+
+  .landing-hero div.container {
+    margin: 0;
+  }
+
+  .row div.col.m7.landing-hero-message {
+    width: 100% !important;
+    margin: 0;
+    padding: 10px 5px;
+  }
+
+  .floating-message {
+    position: relative;
+    width: 100%;
+    top: 0;
+    margin-top: 0;
+  }
+
+  .landing-hiw-steps {
+    height: 100px;
+  }
+
+  .landing-title {
+    font-size: 25px;
+  }
+}

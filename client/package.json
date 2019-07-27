@@ -1,0 +1,45 @@
+{
+  "name": "client",
+  "version": "0.1.0",
+  "private": true,
+  "proxy": {
+    "/auth/google": {
+      "target": "https://localhost:5000"
+    },
+    "/auth/linkedin": {
+      "target": "https://localhost:5000"
+    },
+    "/api/*": {
+      "target": "http://localhost:5000"
+    }
+  },
+  "dependencies": {
+    "@fortawesome/free-solid-svg-icons": "^5.8.1",
+    "axios": "^0.18.0",
+    "classnames": "^2.2.6",
+    "gsap": "^2.1.2",
+    "jwt-decode": "^2.2.0",
+    "lodash": "^4.17.11",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-loader-spinner": "^2.3.0",
+    "react-redux": "^5.0.7",
+    "react-redux-toastr": "^7.5.1",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.1.1",
+    "react-slick": "^0.23.2",
+    "react-sticky": "^6.0.3",
+    "react-stripe-checkout": "^2.6.3",
+    "react-stripe-elements": "^3.0.0",
+    "redux": "^3.7.2",
+    "redux-form": "^7.3.0",
+    "redux-thunk": "^2.2.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
