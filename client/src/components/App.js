@@ -5,10 +5,8 @@ import * as actions from '../actions';
 import jwt_decode from 'jwt-decode';
 import setAuthToken from '../utils/setAuthToken';
 import ReduxToastr from 'react-redux-toastr';
-
 import { Provider } from 'react-redux';
 
-import Header from './Header';
 import Nav from './Nav';
 import Dashboard from './Dashboard';
 import Register from './users/register';

@@ -17,7 +17,7 @@ const app = express();
 
 app.use(function(req, res, next) {
   if (req.headers['x-forwarded-proto'] == 'http') {
-    res.redirect('https://www.taddletext.com' + req.url);
+    res.redirect('https://comp-u.herokuapp.com' + req.url);
   } else {
     return next();
   }

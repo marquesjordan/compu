@@ -9,7 +9,6 @@ const requireLogin = require('../middlewares/requireLogin');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const keys = require('../config/keys');
-const stripe = require('stripe')(keys.stripeSecretKey);
 const User = mongoose.model('users');
 const Profile = mongoose.model('profile');
 const SendGrid = require('../services/SendGrid');
@@ -48,22 +47,6 @@ module.exports = app => {
 
   app.get('/api/current_user', requireLogin, async (req, res) => {
     const current_user = await User.findById(req.user.id);
-
-    if (current_user.stripeCustomerId) {
-      const customer = await stripe.customers.retrieve(
-        current_user.stripeCustomerId
-      );
-      if (
-        customer.subscriptions &&
-        customer.subscriptions.data &&
-        customer.subscriptions.data[0]
-      ) {
-        current_user.status = customer.subscriptions.data[0].status;
-        current_user.subscription = customer.subscriptions.data[0].plan.id;
-      }
-
-      await current_user.save();
-    }
 
     res.send(current_user);
   });

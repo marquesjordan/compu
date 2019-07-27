@@ -51,20 +51,7 @@ class SignUpForm extends Component {
           errors: this.props.errors.error
         });
       }
-
-      if (this.props.errors.registered) {
-        const data = this.props.errors.registered;
-        this.props.sendRegistrationEmail({
-          name: data.registered.name,
-          toEmail: data.registered.toEmail,
-          subject: 'Taddle Text Registration',
-          title: 'Registered',
-          text: 'Thank you for registering with TaddleText.',
-          message: 'Thank you for registering with TaddleText.',
-          templateId: 'd-31bd07546cb04848b5e1856efcd03a06'
-        });
-        this.props.history.push('/login');
-      }
+      this.props.history.push('/login');
     }
   }
 
