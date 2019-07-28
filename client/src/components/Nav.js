@@ -81,31 +81,33 @@ class Nav extends Component {
   render() {
     return (
       <nav className="navbar navbar-dark bg-primary">
-        <a className="navbar-brand" href="/">
-          <img
-            src="/docs/4.0/assets/brand/bootstrap-solid.svg"
-            width="30"
-            height="30"
-            class="d-inline-block align-top"
-            alt=""
-          />
-          Comp-U-Code
-        </a>
-        <nav className="main-nav navbar navbar-right navbar-expand-md">
-          <button
-            className="navbar-toggler collapsed"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbar-collapse"
-          >
-            <span> </span>
-            <span> </span>
-            <span> </span>
-          </button>
-          <div id="navbar-collapse" className="navbar-collapse collapse">
-            {this.renderContent()}
-          </div>
-        </nav>
+        <div className="container">
+          <a className="navbar-brand" href="/">
+            <img
+              src="/docs/4.0/assets/brand/bootstrap-solid.svg"
+              width="30"
+              height="30"
+              class="d-inline-block align-top"
+              alt=""
+            />
+            Comp-U-Code
+          </a>
+          <nav className="main-nav navbar navbar-right navbar-expand-md">
+            <button
+              className="navbar-toggler collapsed"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbar-collapse"
+            >
+              <span> </span>
+              <span> </span>
+              <span> </span>
+            </button>
+            <div id="navbar-collapse" className="navbar-collapse collapse">
+              {this.renderContent()}
+            </div>
+          </nav>
+        </div>
       </nav>
     );
   }

@@ -15,32 +15,56 @@ const Profile = mongoose.model('profile');
 const SendGrid = require('../services/SendGrid');
 
 module.exports = app => {
+  app.post('/api/getCustomer', async (req, res) => {
+    const { phone } = req.body;
 
-  app.post('/api/getCustomer',  (req, res) => {
+    Customer.findOne({ phone: phone })
+      .then(current_customer => {
+        if (!current_customer) {
+          customer = new Customer({ phone: phone }).save().then(customer => {
+            console.log('Customer*** ', customer);
+            profile = new Profile({
+              _customer: customer._id,
+              phone: customer.phone
+            }).save();
+          });
+        }
+      })
+      .catch(err => {
+        console.log('Problem getting customer by phone numebr.');
+      });
 
-    console.log('bodyyyy ', req.body);
-    const {
-        phone,
-    } = req.body;
+    const active_customer = await Customer.findOne({ phone: phone });
+    const current_profile = await Profile.findOne({ phone: phone });
 
-    console.log(phone);
+    const customerObj = {
+      customer: active_customer,
+      profile: current_profile
+    };
 
-    Customer.findOne({phone: phone})
-        .then((current_customer) => {
-            console.log("CurrentCustomer: " , current_customer)
-            if (!current_customer) {
-                customer = new Customer({ phone: phone }).save();
-                console.log("customer", customer);
-            } else {
-                current_customer.count++;
-                current_customer.save();
-            }
-        })
-        .catch(err => {
-            console.log("Problem getting customer by phone numebr.")
-        });
-
-    
-    console.log('donnene');
+    res.send(customerObj);
   });
-}
+
+  app.post('/api/addCredit', async (req, res) => {
+    const { phone } = req.body;
+
+    Customer.findOne({ phone: phone })
+      .then(current_customer => {
+        current_customer.count++;
+        current_customer.save();
+      })
+      .catch(err => {
+        console.log('Problem getting customer by phone numebr.');
+      });
+
+    const active_customer = await Customer.findOne({ phone: phone });
+    const current_profile = await Profile.findOne({ phone: phone });
+
+    const customerObj = {
+      customer: active_customer,
+      profile: current_profile
+    };
+
+    res.send(customerObj);
+  });
+};

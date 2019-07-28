@@ -11,7 +11,7 @@ import Nav from './Nav';
 import Dashboard from './Dashboard';
 import Register from './users/register';
 import Login from './users/login';
-import Customer from './customer/customer'
+import Customer from './customer/customer';
 import Forgot from './users/forgot';
 import Reset from './users/reset';
 import LoginForm from './home/LoginForm';
@@ -35,7 +35,7 @@ class App extends Component {
         // Logout user
         this.props.logoutUser();
         // Redirect to login
-        window.location.href = './login';
+        window.location.href = './';
       }
     }
   }
@@ -61,8 +61,8 @@ class App extends Component {
               <Route exact path="/register" component={SignUpForm} />
               <Route exact path="/resetpassword" component={Forgot} />
               <Route exact path="/resetpassword/:token" component={Reset} />
-              <Route exact path="/customer" component={Customer} />
               <Switch>
+                <PrivateRoute exact path="/customer" component={Customer} />
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
               </Switch>
             </div>
