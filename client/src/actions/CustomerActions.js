@@ -1,17 +1,19 @@
 import axios from 'axios';
 
-import {
-    CHECK_CUSTOMER,
-} from './types';
+import { CHECK_CUSTOMER, CLEAR_CUSTOMER, ADD_CUSTOMER } from './types';
 
+export const checkCustomer = value => async dispatch => {
+  const res = await axios.post(`/api/getCustomer`, { phone: value });
 
-export const checkCustomer = (value) => async dispatch => {
-    console.log("ACTION CALLED : "); 
-    console.log(value); /// 1234567
+  dispatch({ type: CHECK_CUSTOMER, payload: res.data });
+};
 
-    const res = await axios.post(`/api/getCustomer`, {phone: value});
+export const clearCustomer = () => async dispatch => {
+  dispatch({ type: CLEAR_CUSTOMER, payload: {} });
+};
 
+export const addCredit = value => async dispatch => {
+  const res = await axios.post(`/api/addCredit`, { phone: value });
 
-  
-    // dispatch({ type: CHECK_CUSTOMER, payload: res.data });
+  dispatch({ type: ADD_CUSTOMER, payload: res.data });
 };

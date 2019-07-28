@@ -3,7 +3,7 @@ import { reducer as reduxForm } from 'redux-form';
 import { reducer as toastrReducer } from 'react-redux-toastr';
 import authReducers from './authReducers';
 import userReducers from './userReducers';
-import clientReducers from './clientReducers';
+import customerReducers from './customerReducers';
 import referralReducers from './referralReducers';
 import profileReducers from './profileReducers';
 import uploadReducers from './uploadReducers';
@@ -18,7 +18,7 @@ export default combineReducers({
   user: userReducers,
   form: reduxForm,
   toastr: toastrReducer,
-  clients: clientReducers,
+  customer: customerReducers,
   referrals: referralReducers,
   profile: profileReducers,
   uploaded: uploadReducers,

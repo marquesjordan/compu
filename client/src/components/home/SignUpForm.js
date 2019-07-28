@@ -51,7 +51,7 @@ class SignUpForm extends Component {
           errors: this.props.errors.error
         });
       }
-      this.props.history.push('/login');
+      this.props.history.push('/');
     }
   }
 

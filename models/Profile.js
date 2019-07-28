@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const profileSchema = new Schema({
-  _user: { type: Schema.Types.ObjectId, ref: 'User' },
+  _customer: { type: Schema.Types.ObjectId, ref: 'Customer' },
   fullname: { type: String, default: '' },
   title: { type: String, default: '' },
   company: { type: String, default: '' },
@@ -12,7 +12,6 @@ const profileSchema = new Schema({
   photo: { type: String, default: '' },
   logo: { type: String, default: '' },
   bio: { type: String, default: '' },
-  licenses: { type: Array, default: [] },
   ig: { type: String, default: '' },
   linkedin: { type: String, default: '' },
   twitter: { type: String, default: '' },
@@ -22,7 +21,7 @@ const profileSchema = new Schema({
   state: { type: String, default: '' },
   zip: { type: String, default: '' },
   views: { type: Number, default: 0 },
-  prefix: { type: String, default: '' },
+  promoUrl: { type: String, default: '' },
   created: { type: Date, default: Date.now }
 });
 

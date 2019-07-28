@@ -3,6 +3,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 import * as actions from '../actions';
+import Customer from './customer/customer';
+import Profile from './customer/profile';
+import Spinner from './common/spinner';
 
 import './common/css/dashboard.css';
 import './common/css/common.css';
@@ -11,6 +14,13 @@ import './common/css/theme.css';
 class Dashboard extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      customer: false
+    };
+
+    this.currentDisplay = this.currentDisplay.bind(this);
+    this.toggleCustomerState = this.toggleCustomerState.bind(this);
   }
 
   componentDidMount() {}
@@ -21,17 +31,61 @@ class Dashboard extends Component {
     this.props.logoutUser();
   }
 
+  toggleCustomerState() {
+    this.setState({
+      customer: !this.state.customer
+    });
+  }
+
+  currentDisplay() {
+    const { customer, profile } = this.props.customer;
+
+    if (customer !== undefined) {
+      switch (this.state.customer) {
+        case null:
+          return <Spinner />;
+        case false:
+          return <Customer toggleCustomerState={this.toggleCustomerState} />;
+        default:
+          return <Profile />;
+      }
+    } else {
+      return <Customer toggleCustomerState={this.toggleCustomerState} />;
+    }
+  }
+
   render() {
+    const { customer, profile } = this.props.customer;
+
     return (
-      <div className="">
-        <div className="dash-wrapper">HELLO WORLD</div>
+      <div>
+        <div
+          className={
+            customer !== undefined ? 'row justify-content-md-center' : 'd-none'
+          }
+          style={{ paddingTop: '10px', paddingBottom: '10px' }}
+        >
+          <div
+            className="col-md-6 dash-back"
+            onClick={() => {
+              this.toggleCustomerState();
+              this.props.clearCustomer();
+            }}
+          >
+            {' '}
+            {'<-'} Back{' '}
+          </div>
+        </div>
+        <div className="row justify-content-md-center">
+          <div className="col-md-6">{this.currentDisplay()}</div>
+        </div>
       </div>
     );
   }
 }
 
-function mapStateToProps({ auth }) {
-  return { auth };
+function mapStateToProps({ auth, customer }) {
+  return { auth, customer };
 }
 
 export default connect(

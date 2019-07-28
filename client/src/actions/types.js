@@ -24,3 +24,6 @@ export const SUBSCRIPTION = 'subscription';
 export const REGISTERED = 'registered';
 export const CHECK_CUSTOMER = 'check_customer';
 export const GET_BUSINESS_SETTINGS = 'get_business_settings'
+export const CLEAR_CUSTOMER = 'clear_customer';
+export const ADD_CUSTOMER = 'add_customer';
+

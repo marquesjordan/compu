@@ -16,7 +16,7 @@ const PrivateRoute = ({ component: Component, auth, ...rest }) => (
           <Spinner />
         )
       ) : (
-        <Redirect to="/login" />
+        <Redirect to="/" />
       )
     }
   />
