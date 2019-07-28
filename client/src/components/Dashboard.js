@@ -6,10 +6,20 @@ import * as actions from '../actions';
 import Customer from './customer/customer';
 import Profile from './customer/profile';
 import Spinner from './common/spinner';
+import BusinessProfile from './business/businessProfile'
+
+// Material UI Stuff
+// import withStyles from '@material-ui/core/styles/withStyles';
 
 import './common/css/dashboard.css';
 import './common/css/common.css';
 import './common/css/theme.css';
+
+const styles = {
+  
+}
+
+
 
 class Dashboard extends Component {
   constructor(props) {
@@ -37,6 +47,11 @@ class Dashboard extends Component {
     });
   }
 
+  handleCustomer = () => {
+    this.toggleCustomerState();
+    this.props.clearCustomer();
+  }
+
   currentDisplay() {
     const { customer, profile } = this.props.customer;
 
@@ -59,26 +74,23 @@ class Dashboard extends Component {
 
     return (
       <div>
+        <BusinessProfile />
         <div
           className={
             customer !== undefined ? 'row justify-content-md-center' : 'd-none'
           }
           style={{ paddingTop: '10px', paddingBottom: '10px' }}
         >
-          <div
-            className="col-md-6 dash-back"
-            onClick={() => {
-              this.toggleCustomerState();
-              this.props.clearCustomer();
-            }}
-          >
+          
+          <div className="col-md-6 dash-back" onClick={this.handleCustomer}>
             {' '}
-            {'<-'} Back{' '}
+            {'<-'} Back {' '}
           </div>
         </div>
         <div className="row justify-content-md-center">
           <div className="col-md-6">{this.currentDisplay()}</div>
         </div>
+        
       </div>
     );
   }
@@ -88,7 +100,4 @@ function mapStateToProps({ auth, customer }) {
   return { auth, customer };
 }
 
-export default connect(
-  mapStateToProps,
-  actions
-)(withRouter(Dashboard));
+export default connect(mapStateToProps, actions)(withRouter(Dashboard));

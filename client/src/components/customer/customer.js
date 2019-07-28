@@ -5,46 +5,56 @@ import * as actions from '../../actions';
 
 import FormGroup from '../common/FormGroup';
 
+
 export class customer extends Component {
-  state = {
-    phoneNumber: ''
-  };
+    state = {
+        phoneNumber: '',
+    }
 
-  onSubmit = e => {
-    e.preventDefault();
-    this.props.checkCustomer(this.state.phoneNumber);
-    this.props.toggleCustomerState();
-  };
+    componentWillMount = () => {
+      // this.props.getBusiness();
+    }
 
-  onChange = e => {
-    console.log(e.target.value);
-    this.setState({ phoneNumber: e.target.value });
-  };
 
-  render() {
-    return (
-      <div>
-        <div className="login-form-container">
-          <h1>Insert Number</h1>
+    onSubmit = (e) => {
+        e.preventDefault();
+        this.props.checkCustomer(this.state.phoneNumber);
+        console.log("ONSUBMIT");
+        console.log(this.state.phoneNumber);
+    }
 
-          <form className="login-form" onSubmit={this.onSubmit}>
-            <FormGroup
-              id="forgotEmail"
-              type="text"
-              label="Phone Number"
-              icon="&#xE0BE;"
-              onChange={this.onChange}
-            />
-            <button type="submit">Submit</button>
-            <div />
-          </form>
-        </div>
-      </div>
-    );
-  }
+    onChange = (e) => {
+        console.log(e.target.value)
+        this.setState({ phoneNumber: e.target.value });
+    }
+
+    render() {
+        return (
+            <div>
+              <div className="login-form-container">
+                <h1>Insert Number</h1>
+
+                <form className="login-form" onSubmit={this.onSubmit}>
+                  <FormGroup
+                    id="forgotEmail"
+                    type="text"
+                    label="Phone Number"
+                    icon="&#xE0BE;"
+                    onChange={this.onChange} 
+                    />
+                  <button type="submit">Submit</button>
+                  <div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          );
+    }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  business: state.business
+});
 
 export default connect(
   mapStateToProps,
