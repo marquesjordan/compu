@@ -7,12 +7,6 @@ import * as actions from '../../actions';
 // Components
 import FormGroup from '../common/FormGroup';
 
-const classes = {
-    saveButton : {
-
-    }
-}
-
 export class customer extends Component {
     state = {
         max: ''

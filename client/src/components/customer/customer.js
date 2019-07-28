@@ -5,9 +5,14 @@ import * as actions from '../../actions';
 
 import FormGroup from '../common/FormGroup';
 
+
 export class customer extends Component {
     state = {
         phoneNumber: '',
+    }
+
+    componentWillMount = () => {
+      // this.props.getBusiness();
     }
 
 
@@ -47,7 +52,9 @@ export class customer extends Component {
     }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  business: state.business
+});
 
 export default connect(
   mapStateToProps,

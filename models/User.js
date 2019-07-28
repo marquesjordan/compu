@@ -3,6 +3,7 @@ const { Schema } = mongoose;
 const bcrypt = require('bcrypt-nodejs');
 
 const userSchema = new Schema({
+  _business: { type: Schema.Types.ObjectId, ref: 'Business' },
   googleId: String,
   linkedinId: String,
   email: String,
