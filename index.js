@@ -8,6 +8,7 @@ const keys = require('./config/keys');
 require('./models/User');
 require('./models/Referral');
 require('./models/Client');
+require('./models/Customer');
 require('./models/Profile');
 require('./services/passports');
 
@@ -36,6 +37,7 @@ app.use(passport.session());
 
 require('./routes/authRoutes')(app);
 require('./routes/clientRoutes')(app);
+require('./routes/customerRoute')(app);
 require('./routes/referralRoutes')(app);
 require('./routes/profileRoutes')(app);
 require('./routes/awsRoutes')(app);

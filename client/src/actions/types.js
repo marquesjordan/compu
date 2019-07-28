@@ -22,3 +22,4 @@ export const SEARCH_CLIENTS = 'search_clients';
 export const FETCH_CREDITS = 'fetch_credits';
 export const SUBSCRIPTION = 'subscription';
 export const REGISTERED = 'registered';
+export const CHECK_CUSTOMER = 'check_customer';
