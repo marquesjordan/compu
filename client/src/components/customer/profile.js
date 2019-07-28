@@ -15,7 +15,6 @@ import './profile.css';
 class Profile extends Component {
   constructor(props) {
     super(props);
-    debugger;
     this.state = {
       credits:
         this.props.customer && this.props.customer.customer
@@ -29,7 +28,12 @@ class Profile extends Component {
   componentDidMount() {}
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-    debugger;
+    const { customer } = this.props.customer;
+    if (this.state.credits === undefined && customer) {
+      this.setState({
+        credits: customer.count
+      });
+    }
   }
 
   addCredit(phoneNumber) {
