@@ -37,10 +37,9 @@ export class customer extends Component {
                     type="text"
                     label="Phone Number"
                     icon="&#xE0BE;"
-                    onChange={this.onChange} />
-                  <button type="submit">
-                    Submit
-                  </button>
+                    onChange={this.onChange} 
+                    />
+                  <button type="submit">Submit</button>
                   <div>
                   </div>
                 </form>

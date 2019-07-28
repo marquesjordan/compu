@@ -17,6 +17,7 @@ import Reset from './users/reset';
 import LoginForm from './home/LoginForm';
 import SignUpForm from './home/SignUpForm';
 import PrivateRoute from './common/PrivateRoute';
+import BusinessSettings from './businessSettings/businessSettings';
 
 class App extends Component {
   componentDidMount() {
@@ -62,6 +63,7 @@ class App extends Component {
               <Route exact path="/resetpassword" component={Forgot} />
               <Route exact path="/resetpassword/:token" component={Reset} />
               <Route exact path="/customer" component={Customer} />
+              <Route exact path="/businessSettings" component={BusinessSettings} />
               <Switch>
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
               </Switch>
