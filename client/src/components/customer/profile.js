@@ -15,11 +15,29 @@ import './profile.css';
 class Profile extends Component {
   constructor(props) {
     super(props);
+    debugger;
+    this.state = {
+      credits:
+        this.props.customer && this.props.customer.customer
+          ? this.props.customer.customer.count
+          : 0
+    };
+
+    this.addCredit = this.addCredit.bind(this);
   }
 
   componentDidMount() {}
 
-  componentDidUpdate(prevProps, prevState) {}
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    debugger;
+  }
+
+  addCredit(phoneNumber) {
+    this.setState({
+      credits: this.state.credits + 1
+    });
+    this.props.addCredit(phoneNumber);
+  }
 
   render() {
     const { customer, profile } = this.props.customer;
@@ -50,10 +68,10 @@ class Profile extends Component {
           <div className="profile-footer">
             <div className="row">
               <div className="col-md-4">
-                <h1>{customer.count}</h1>
+                <h1>{this.state.credits}</h1>
                 <button
                   onClick={() => {
-                    this.props.addCredit(customer.phone);
+                    this.addCredit(customer.phone);
                   }}
                   className="btn btn-success"
                 >
