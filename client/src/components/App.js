@@ -62,11 +62,8 @@ class App extends Component {
               <Route exact path="/register" component={SignUpForm} />
               <Route exact path="/resetpassword" component={Forgot} />
               <Route exact path="/resetpassword/:token" component={Reset} />
-<<<<<<< HEAD
               <Route exact path="/customer" component={Customer} />
               <Route exact path="/businessSettings" component={BusinessSettings} />
-=======
->>>>>>> 5ce4acda85c0b3d544cd360e92b9e1e915362e46
               <Switch>
                 <PrivateRoute exact path="/customer" component={Customer} />
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
