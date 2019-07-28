@@ -23,6 +23,8 @@ class Profile extends Component {
     };
 
     this.addCredit = this.addCredit.bind(this);
+    this.listPromos = this.listPromos.bind(this);
+    this.promoClicked = this.promoClicked.bind(this);
   }
 
   componentDidMount() {}
@@ -36,6 +38,17 @@ class Profile extends Component {
     }
   }
 
+  promoClicked(data) {
+    debugger;
+
+    const obj = {
+      promoId: data.target.id,
+      customer: this.props.customer.customer
+    };
+
+    this.props.subtractCredit(obj);
+  }
+
   addCredit(phoneNumber) {
     this.setState({
       credits: this.state.credits + 1
@@ -43,10 +56,23 @@ class Profile extends Component {
     this.props.addCredit(phoneNumber);
   }
 
+  listPromos() {
+    return [].concat(this.props.promo).map(d => (
+      <div
+        className="profile-promo"
+        id={d._id}
+        key={d._id}
+        onClick={e => this.promoClicked(e)}
+      >
+        credits: {d.redemption} - {d.description}
+      </div>
+    ));
+  }
+
   render() {
     const { customer, profile } = this.props.customer;
     return (
-      <div className="">
+      <div className="" style={{ paddingBottom: '60px' }}>
         <div className="profile-wrapper">
           <div className="profile-body">
             <div className="profile-body-left">
@@ -54,15 +80,16 @@ class Profile extends Component {
                 <u>Client Info</u>
               </h3>
               <div>
-                <span className="profile-category">Name:</span> {customer.name}
+                <span className="profile-category">Name:</span>{' '}
+                {customer ? customer.name : ''}
               </div>
               <div>
                 <span className="profile-category">Phone:</span>{' '}
-                {customer.phone}
+                {customer ? customer.phone : ''}
               </div>
               <div>
                 <span className="profile-category">Email:</span>{' '}
-                {customer.email}
+                {customer ? customer.email : ''}
               </div>
             </div>
             <div className="profile-body-right">
@@ -82,11 +109,11 @@ class Profile extends Component {
                   Add Credit
                 </button>
               </div>
-              <div className="col-md-4">
-                <h1> </h1>
-              </div>
-              <div className="col-md-4">
-                <h1>Gold</h1>
+              <div
+                className="col-md-8 profile-promo-cont"
+                style={{ padding: '10px 0', cursor: 'pointer' }}
+              >
+                {this.listPromos()}
               </div>
             </div>
           </div>
@@ -96,8 +123,8 @@ class Profile extends Component {
   }
 }
 
-function mapStateToProps({ auth, customer }) {
-  return { auth, customer };
+function mapStateToProps({ auth, customer, promo }) {
+  return { auth, customer, promo };
 }
 
 export default connect(

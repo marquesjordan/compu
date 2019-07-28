@@ -12,6 +12,7 @@ import rewardReducers from './rewardReducers';
 import creditsReducers from './creditsReducers';
 import viewReducers from './viewReducers';
 import subscriptionReducers from './subscriptionReducers';
+import promoReducers from './promoReducers';
 
 export default combineReducers({
   auth: authReducers,
@@ -26,5 +27,6 @@ export default combineReducers({
   view: viewReducers,
   rewards: rewardReducers,
   credits: creditsReducers,
-  subscription: subscriptionReducers
+  subscription: subscriptionReducers,
+  promo: promoReducers
 });

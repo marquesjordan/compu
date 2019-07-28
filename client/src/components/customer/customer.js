@@ -29,9 +29,9 @@ export class customer extends Component {
 
   render() {
     return (
-      <div>
+      <div style={{ paddingTop: '60px' }}>
         <div className="login-form-container">
-          <h1>Insert Number</h1>
+          <h4>Customer</h4>
 
           <form className="login-form" onSubmit={this.onSubmit}>
             <FormGroup

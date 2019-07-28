@@ -17,3 +17,9 @@ export const addCredit = value => async dispatch => {
 
   dispatch({ type: ADD_CUSTOMER, payload: res.data });
 };
+
+export const subtractCredit = value => async dispatch => {
+  const res = await axios.post(`/api/subCredit`, value);
+
+  dispatch({ type: ADD_CUSTOMER, payload: res.data });
+};

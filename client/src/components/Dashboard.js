@@ -7,6 +7,7 @@ import Customer from './customer/customer';
 import Profile from './customer/profile';
 import Spinner from './common/spinner';
 import BusinessProfile from './business/businessProfile';
+import Promos from './business/promos';
 
 // Material UI Stuff
 // import withStyles from '@material-ui/core/styles/withStyles';
@@ -22,14 +23,14 @@ class Dashboard extends Component {
     super(props);
 
     this.state = {
-      customer: false
+      customer: false,
+      visible: false
     };
 
     this.currentDisplay = this.currentDisplay.bind(this);
     this.toggleCustomerState = this.toggleCustomerState.bind(this);
+    this.showPromos = this.showPromos.bind(this);
   }
-
-  componentDidMount() {}
 
   componentDidUpdate(prevProps, prevState) {}
 
@@ -38,9 +39,20 @@ class Dashboard extends Component {
   }
 
   toggleCustomerState() {
+    console.log(this.state.visible);
+
     this.setState({
-      customer: !this.state.customer
+      visible: !this.state.visible
     });
+    console.log(this.state.visible);
+  }
+
+  showPromos() {
+    return [].concat(this.props.promo).map(d => (
+      <div key={d._id}>
+        {d.name} - {d.description}
+      </div>
+    ));
   }
 
   handleCustomer = () => {
@@ -52,7 +64,7 @@ class Dashboard extends Component {
     const { customer, profile } = this.props.customer;
 
     if (customer !== undefined) {
-      switch (this.state.customer) {
+      switch (this.state.visible) {
         case null:
           return <Spinner />;
         case false:
@@ -70,28 +82,43 @@ class Dashboard extends Component {
 
     return (
       <div>
-        <BusinessProfile />
         <div
           className={
             customer !== undefined ? 'row justify-content-md-center' : 'd-none'
           }
           style={{ paddingTop: '10px', paddingBottom: '10px' }}
         >
-          <div className="col-md-6 dash-back" onClick={this.handleCustomer}>
+          <div
+            className={this.state.visible ? 'col-md-8 dash-back' : 'd-none'}
+            onClick={this.handleCustomer}
+          >
             {' '}
             {'<-'} Back{' '}
           </div>
         </div>
         <div className="row justify-content-md-center">
-          <div className="col-md-6">{this.currentDisplay()}</div>
+          <div className="col-md-4">
+            <Promos />
+          </div>
+          <div className="col-md-4" style={{ borderLeft: '1px solid' }}>
+            <div style={{ paddingTop: '40px' }}>
+              <h4>Promo List</h4>
+              {this.showPromos()}
+            </div>
+          </div>
+        </div>
+        <div className="row justify-content-md-center">
+          <div className="col-md-8" style={{ borderTop: '1px solid' }}>
+            {this.currentDisplay()}
+          </div>
         </div>
       </div>
     );
   }
 }
 
-function mapStateToProps({ auth, customer }) {
-  return { auth, customer };
+function mapStateToProps({ auth, customer, promo }) {
+  return { auth, customer, promo };
 }
 
 export default connect(

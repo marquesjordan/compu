@@ -12,6 +12,7 @@ const keys = require('../config/keys');
 const User = mongoose.model('users');
 const Customer = mongoose.model('customer');
 const Profile = mongoose.model('profile');
+const Promo = mongoose.model('promoCodes');
 const SendGrid = require('../services/SendGrid');
 
 module.exports = app => {
@@ -66,5 +67,26 @@ module.exports = app => {
     };
 
     res.send(customerObj);
+  });
+
+  app.post('/api/subCredit', async (req, res) => {
+    const { promoId, customer } = req.body;
+
+    const promo = await Promo.findOne({ _id: promoId }).catch(err => {
+      console.log('Problem getting customer by phone numebr.');
+    });
+
+    const active_customer = await Customer.findOne({ _id: customer._id });
+
+    if (active_customer && promo) {
+      if (active_customer.count > promo.redemption) {
+        active_customer.count -= promo.redemption;
+        await active_customer.save();
+      }
+
+      res.send(active_customer);
+    } else {
+      res.send(active_customer);
+    }
   });
 };

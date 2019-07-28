@@ -41,6 +41,7 @@ app.use(passport.session());
 require('./routes/authRoutes')(app);
 require('./routes/clientRoutes')(app);
 require('./routes/customerRoute')(app);
+require('./routes/promoRoutes')(app);
 require('./routes/businessRoute')(app);
 require('./routes/referralRoutes')(app);
 require('./routes/profileRoutes')(app);

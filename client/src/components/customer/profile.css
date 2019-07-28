@@ -51,4 +51,18 @@
   background-color: #ffffff;
   border: 1px solid;
   text-align: center;
+  padding-bottom: 20px;
+}
+
+.profile-promo {
+  cursor: pointer;
+}
+
+.profile-promo:hover {
+  background-color: #dcdcdc !important;
+}
+
+.profile-promo-cont {
+  max-height: 150px;
+  overflow: auto;
 }

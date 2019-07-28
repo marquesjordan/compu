@@ -16,6 +16,7 @@ export * from './ReferralActions';
 export * from './ProfileActions';
 export * from './CustomerActions';
 export * from './BusinessActions';
+export * from './PromoActions';
 
 export const fetchUser = () => async dispatch => {
   const res = await axios.get('/api/current_user', {
