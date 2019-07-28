@@ -9,6 +9,9 @@ require('./models/User');
 require('./models/Referral');
 require('./models/Client');
 require('./models/Customer');
+require('./models/PromoCodes');
+require('./models/Business');
+require('./models/BusinessSettings');
 require('./models/Profile');
 require('./services/passports');
 
