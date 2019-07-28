@@ -2,6 +2,10 @@
   margin: 0;
 }
 
+.dash-back {
+  cursor: pointer;
+}
+
 .dash-profile {
   background-color: #5f9ea0;
   background: -webkit-radial-gradient(
