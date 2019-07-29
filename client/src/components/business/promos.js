@@ -32,6 +32,11 @@ export class Promos extends Component {
       description: this.state.description
     };
     this.props.createPromo(promoObj);
+    this.setState({
+      promoName: '',
+      redemption: 0,
+      description: ''
+    });
   };
 
   onChange = e => {
