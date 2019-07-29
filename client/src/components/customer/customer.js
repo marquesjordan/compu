@@ -29,7 +29,7 @@ export class customer extends Component {
 
   render() {
     return (
-      <div style={{ paddingTop: '60px' }}>
+      <div style={{ padding: '60px 0' }}>
         <div className="login-form-container">
           <h4>Customer</h4>
 

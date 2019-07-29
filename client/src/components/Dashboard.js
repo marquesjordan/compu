@@ -82,34 +82,87 @@ class Dashboard extends Component {
 
     return (
       <div>
+        <ul
+          class="nav nav-tabs"
+          id="myTab"
+          role="tablist"
+          style={{ marginTop: '20px' }}
+        >
+          <li class="nav-item">
+            <a
+              class="nav-link active"
+              id="home-tab"
+              data-toggle="tab"
+              href="#home"
+              role="tab"
+              aria-controls="home"
+              aria-selected="true"
+            >
+              Promo
+            </a>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              id="profile-tab"
+              data-toggle="tab"
+              href="#profile"
+              role="tab"
+              aria-controls="profile"
+              aria-selected="false"
+            >
+              Customer
+            </a>
+          </li>
+        </ul>
         <div
-          className={
-            customer !== undefined ? 'row justify-content-md-center' : 'd-none'
-          }
-          style={{ paddingTop: '10px', paddingBottom: '10px' }}
+          class="tab-content"
+          id="myTabContent"
+          style={{ border: '1px solid #dcdcdc' }}
         >
           <div
-            className={this.state.visible ? 'col-md-8 dash-back' : 'd-none'}
-            onClick={this.handleCustomer}
+            class="tab-pane fade show active"
+            id="home"
+            role="tabpanel"
+            aria-labelledby="home-tab"
           >
-            {' '}
-            {'<-'} Back{' '}
-          </div>
-        </div>
-        <div className="row justify-content-md-center">
-          <div className="col-md-4">
-            <Promos />
-          </div>
-          <div className="col-md-4" style={{ borderLeft: '1px solid' }}>
-            <div style={{ paddingTop: '40px' }}>
-              <h4>Promo List</h4>
-              {this.showPromos()}
+            <div className="row justify-content-md-center">
+              <div className="col-md-4">
+                <Promos />
+              </div>
+              <div className="col-md-4" style={{ borderLeft: '1px solid' }}>
+                <div style={{ paddingTop: '40px' }}>
+                  <h4>Promo List</h4>
+                  {this.showPromos()}
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="row justify-content-md-center">
-          <div className="col-md-8" style={{ borderTop: '1px solid' }}>
-            {this.currentDisplay()}
+          <div
+            class="tab-pane fade"
+            id="profile"
+            role="tabpanel"
+            aria-labelledby="profile-tab"
+          >
+            <div className="row justify-content-md-center">
+              <div className="col-md-8">
+                <div
+                  className={customer !== undefined ? '' : 'd-none'}
+                  style={{ paddingTop: '10px', paddingBottom: '10px' }}
+                >
+                  <div
+                    className={
+                      this.state.visible ? 'col-md-8 dash-back' : 'd-none'
+                    }
+                    onClick={this.handleCustomer}
+                  >
+                    {' '}
+                    {'<-'} Back{' '}
+                  </div>
+                </div>
+                {this.currentDisplay()}
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -90,7 +90,7 @@ class Nav extends Component {
               className="d-inline-block align-top"
               alt=""
             />
-            Comp-U-Code
+            CompU
           </a>
           <nav className="main-nav navbar navbar-right navbar-expand-md">
             <button
