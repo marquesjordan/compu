@@ -21,7 +21,7 @@
     "classnames": "^2.2.6",
     "gsap": "^2.1.2",
     "jwt-decode": "^2.2.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "react": "^16.3.0",
     "react-dom": "^16.2.0",
     "react-loader-spinner": "^2.3.0",
